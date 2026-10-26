@@ -1,4 +1,4 @@
-ip addr
+cd ~ && ip addr
 ---
 ip route
 ---
