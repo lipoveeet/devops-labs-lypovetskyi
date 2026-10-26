@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths: ['labs/**', '.github/workflows/labs.yml']
   workflow_dispatch:
+concurrency:
+  group: labs
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -19,6 +22,8 @@ jobs:
         run: python3 labs/session.py labs/lr1.sh /tmp/lr1.json
       - name: LR2
         run: python3 labs/session.py labs/lr2.sh /tmp/lr2.json
+      - name: LR3 (release archive)
+        run: python3 labs/session.py labs/lr3x.sh /tmp/lr3x.json
       - name: LR4
         run: python3 labs/session.py labs/lr4.sh /tmp/lr4.json
       - name: LR5
