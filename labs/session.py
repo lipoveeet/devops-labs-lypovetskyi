@@ -1,5 +1,5 @@
 # Runs lab command blocks (separated by a line '---') in one bash session and saves outputs as JSON.
-import sys, json, subprocess
+import sys, json, subprocess, tempfile
 src, dst = sys.argv[1], sys.argv[2]
 M = '__LABMARK__'
 blocks = [b.strip('\n') for b in open(src, encoding='utf-8').read().split('\n---\n') if b.strip()]
@@ -9,7 +9,9 @@ for i, b in enumerate(blocks):
     body = b.split('\n', 1)[1] if root else b
     run = "sudo -H bash -c " + "'" + "cd /root\n" + body.replace("'", "'\\''") + "'" if root else body
     script += f'echo "{M}S {i} $(whoami) $(hostname) $PWD"\n{run}\necho\necho "{M}E {i}"\n'
-out = subprocess.run(['bash', '-c', script], capture_output=True, text=True, stdin=subprocess.DEVNULL).stdout
+with tempfile.NamedTemporaryFile('w', suffix='.sh', delete=False) as f:
+    f.write(script)
+out = subprocess.run(['bash', f.name], capture_output=True, text=True, stdin=subprocess.DEVNULL).stdout
 res, cur = [], None
 for line in out.split('\n'):
     if line.startswith(M + 'S '):
