@@ -1,4 +1,4 @@
-whoami; hostname
+cd ~ && whoami; hostname
 ---
 ps
 ---
@@ -15,9 +15,9 @@ sleep 4
 ---
 ps aux | grep -i calculator | grep -v grep
 ---
-pgrep -a gnome-calculator
+pgrep -af gnome-calculator
 ---
-kill $(pgrep gnome-calculator)
+kill $(pgrep -f gnome-calculator)
 sleep 1
 ---
 ps aux | grep -i calculator | grep -v grep || echo "process gnome-calculator not found"
@@ -43,9 +43,9 @@ mkdir /root/root_dir && echo "created by $(whoami)" > /root/root_dir/root_file.t
 ls -ld /root/root_dir; ls -l /root/root_dir
 ---
 #@root
-mkdir -p /opt/root_dir && echo "created by root" > /opt/root_dir/root_file.txt && ls -ld /opt/root_dir && ls -l /opt/root_dir
+mkdir -p /srv/root_dir && echo "created by root" > /srv/root_dir/root_file.txt && ls -ld /srv/root_dir && ls -l /srv/root_dir
 ---
-cat /opt/root_dir/root_file.txt; echo "test" >> /opt/root_dir/root_file.txt
+cat /srv/root_dir/root_file.txt; echo "test" >> /srv/root_dir/root_file.txt
 ---
 ls /root
 ---
