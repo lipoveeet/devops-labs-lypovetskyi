@@ -1,0 +1,33 @@
+name: DevOps labs
+on:
+  push:
+    branches: [main]
+    paths: ['labs/**', '.github/workflows/labs.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run-labs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q net-tools tree traceroute dnsutils netcat-openbsd cron xvfb gnome-calculator psmisc
+      - name: LR1
+        run: python3 labs/session.py labs/lr1.sh /tmp/lr1.json
+      - name: LR2
+        run: python3 labs/session.py labs/lr2.sh /tmp/lr2.json
+      - name: LR4
+        run: python3 labs/session.py labs/lr4.sh /tmp/lr4.json
+      - name: LR5
+        working-directory: labs
+        run: python3 session.py lr5.sh /tmp/lr5.json
+      - name: Save outputs to branch "outputs"
+        run: |
+          git config user.name "Bohdan Lypovetskyi"; git config user.email "lipoveeet@users.noreply.github.com"
+          mkdir -p /tmp/o && cp /tmp/lr*.json /tmp/o/
+          git checkout --orphan outputs; git rm -rfq . ; rm -rf labs
+          cp /tmp/o/*.json . ; git add *.json; git commit -qm "Lab outputs (run ${{ github.run_number }})"
+          git push -f origin outputs
