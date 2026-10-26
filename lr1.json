@@ -1,0 +1,149 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi",
+  "cmd": "cd ~ && cat /etc/os-release | head -4",
+  "out": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls /",
+  "out": "bin\nbin.usr-is-merged\nboot\ndev\netc\nhome\nimagegeneration\nlib\nlib.usr-is-merged\nlib32\nlib64\nlost+found\nmedia\nmnt\nopt\nproc\nroot\nrun\nsbin\nsbin.usr-is-merged\nsnap\nsrv\nswapfile\nsys\ntmp\nusr\nvar"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls -l /",
+  "out": "total 3145820\nlrwxrwxrwx    1 root root          7 Apr 22  2024 bin -> usr/bin\ndrwxr-xr-x    2 root root       4096 Feb 26  2024 bin.usr-is-merged\ndrwxr-xr-x    5 root root       4096 Oct 12 21:07 boot\ndrwxr-xr-x   18 root root       3980 Oct 26 03:23 dev\ndrwxr-xr-x  141 root root      12288 Oct 26 03:24 etc\ndrwxr-xr-x+   5 root root       4096 Oct 23 09:02 home\ndrwxr-xr-x    6 root root       4096 Oct 12 21:50 imagegeneration\nlrwxrwxrwx    1 root root          7 Apr 22  2024 lib -> usr/lib\ndrwxr-xr-x    2 root root       4096 Apr  8  2024 lib.usr-is-merged\nlrwxrwxrwx    1 root root          9 Oct 12 21:13 lib32 -> usr/lib32\nlrwxrwxrwx    1 root root          9 Apr 22  2024 lib64 -> usr/lib64\ndrwx------    2 root root      16384 Sep  4 04:54 lost+found\ndrwxr-xr-x    2 root root       4096 Sep  4 04:13 media\ndrwxr-xr-x    2 root root       4096 Sep  4 04:13 mnt\ndrwxrwxrwx+  14 root root       4096 Oct 23 09:05 opt\ndr-xr-xr-x  220 root root          0 Oct 26 03:23 proc\ndrwx------   19 root root       4096 Oct 12 21:49 root\ndrwxr-xr-x   34 root root       1000 Oct 26 03:23 run\nlrwxrwxrwx    1 root root          8 Apr 22  2024 sbin -> usr/sbin\ndrwxr-xr-x    2 root root       4096 Mar 31  2024 sbin.usr-is-merged\ndrwxr-xr-x    2 root root       4096 Oct 12 21:05 snap\ndrwxr-xr-x    2 root root       4096 Sep  4 04:13 srv\n-rw-------    1 root root 3221225472 Oct 26 03:23 swapfile\ndr-xr-xr-x   12 root root          0 Oct 26 03:23 sys\ndrwxrwxrwt   13 root root       4096 Oct 26 03:24 tmp\ndrwxr-xr-x   13 root root       4096 Oct 12 21:13 usr\ndrwxr-xr-x   14 root root       4096 Oct 12 21:43 var"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "mkdir -p ~/PI-23-03/Lypovetskyi ~/PI-23-03/Kochetov ~/PI-23-03/Mysliuk",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "touch ~/PI-23-03/Lypovetskyi/7.txt ~/PI-23-03/Kochetov/8.txt ~/PI-23-03/Mysliuk/9.txt",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "echo \"Lypovetskyi Bohdan, PI-23-03, No 7\" > ~/PI-23-03/Lypovetskyi/7.txt",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls -R ~/PI-23-03",
+  "out": "/home/runner/PI-23-03:\nKochetov\nLypovetskyi\nMysliuk\n\n/home/runner/PI-23-03/Kochetov:\n8.txt\n\n/home/runner/PI-23-03/Lypovetskyi:\n7.txt\n\n/home/runner/PI-23-03/Mysliuk:\n9.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "tree ~/PI-23-03",
+  "out": "/home/runner/PI-23-03\n├── Kochetov\n│   └── 8.txt\n├── Lypovetskyi\n│   └── 7.txt\n└── Mysliuk\n    └── 9.txt\n\n4 directories, 3 files"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo adduser --disabled-password --gecos \"Bohdan Lypovetskyi\" blypovetskyi",
+  "out": "info: Adding user `blypovetskyi' ...\ninfo: Selecting UID/GID from range 1000 to 59999 ...\ninfo: Adding new group `blypovetskyi' (1002) ...\ninfo: Adding new user `blypovetskyi' (1002) with group `blypovetskyi (1002)' ...\ninfo: Creating home directory `/home/blypovetskyi' ...\ninfo: Copying files from `/etc/skel' ...\ninfo: Adding new user `blypovetskyi' to supplemental / extra groups `users' ...\ninfo: Adding user `blypovetskyi' to group `users' ..."
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "id blypovetskyi",
+  "out": "uid=1002(blypovetskyi) gid=1002(blypovetskyi) groups=1002(blypovetskyi),100(users)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "grep blypovetskyi /etc/passwd",
+  "out": "blypovetskyi:x:1002:1002:Bohdan Lypovetskyi,,,:/home/blypovetskyi:/bin/bash"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls -lR ~/PI-23-03",
+  "out": "/home/runner/PI-23-03:\ntotal 12\ndrwxr-xr-x 2 runner runner 4096 Oct 26 03:24 Kochetov\ndrwxr-xr-x 2 runner runner 4096 Oct 26 03:24 Lypovetskyi\ndrwxr-xr-x 2 runner runner 4096 Oct 26 03:24 Mysliuk\n\n/home/runner/PI-23-03/Kochetov:\ntotal 0\n-rw-r--r-- 1 runner runner 0 Oct 26 03:24 8.txt\n\n/home/runner/PI-23-03/Lypovetskyi:\ntotal 4\n-rw-r--r-- 1 runner runner 35 Oct 26 03:24 7.txt\n\n/home/runner/PI-23-03/Mysliuk:\ntotal 0\n-rw-r--r-- 1 runner runner 0 Oct 26 03:24 9.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo chown -R blypovetskyi:blypovetskyi ~/PI-23-03",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo chmod -R u=rwX,go= ~/PI-23-03",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo ls -lR ~/PI-23-03",
+  "out": "/home/runner/PI-23-03:\ntotal 12\ndrwx------ 2 blypovetskyi blypovetskyi 4096 Oct 26 03:24 Kochetov\ndrwx------ 2 blypovetskyi blypovetskyi 4096 Oct 26 03:24 Lypovetskyi\ndrwx------ 2 blypovetskyi blypovetskyi 4096 Oct 26 03:24 Mysliuk\n\n/home/runner/PI-23-03/Kochetov:\ntotal 0\n-rw------- 1 blypovetskyi blypovetskyi 0 Oct 26 03:24 8.txt\n\n/home/runner/PI-23-03/Lypovetskyi:\ntotal 4\n-rw------- 1 blypovetskyi blypovetskyi 35 Oct 26 03:24 7.txt\n\n/home/runner/PI-23-03/Mysliuk:\ntotal 0\n-rw------- 1 blypovetskyi blypovetskyi 0 Oct 26 03:24 9.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls ~/PI-23-03/Lypovetskyi",
+  "out": "ls: cannot access '/home/runner/PI-23-03/Lypovetskyi': Permission denied"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ifconfig",
+  "out": "docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500\n        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255\n        ether ca:0e:57:72:64:76  txqueuelen 0  (Ethernet)\n        RX packets 0  bytes 0 (0.0 B)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 0  bytes 0 (0.0 B)\n        TX errors 0  dropped 2 overruns 0  carrier 0  collisions 0\n\nens1: flags=6211<UP,BROADCAST,RUNNING,SLAVE,MULTICAST>  mtu 1500\n        ether 70:a8:a5:6e:a2:2c  txqueuelen 1000  (Ethernet)\n        RX packets 55870  bytes 78157387 (78.1 MB)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 8236  bytes 1052134 (1.0 MB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\n\neth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\n        inet 10.1.0.236  netmask 255.255.240.0  broadcast 10.1.15.255\n        inet6 fe80::72a8:a5ff:fe6e:a22c  prefixlen 64  scopeid 0x20<link>\n        ether 70:a8:a5:6e:a2:2c  txqueuelen 1000  (Ethernet)\n        RX packets 15541  bytes 75285454 (75.2 MB)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 8100  bytes 1045406 (1.0 MB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\n\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\n        inet 127.0.0.1  netmask 255.0.0.0\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\n        loop  txqueuelen 1000  (Local Loopback)\n        RX packets 158  bytes 23194 (23.1 KB)\n        RX errors 0  dropped 0  overruns 0  frame 0\n        TX packets 158  bytes 23194 (23.1 KB)\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ip -4 addr show eth0",
+  "out": "2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000\n    inet 10.1.0.236/20 metric 100 brd 10.1.15.255 scope global eth0\n       valid_lft forever preferred_lft forever"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ping -c 4 google.com",
+  "out": "PING google.com (173.194.192.102) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3064ms"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ping -c 4 8.8.8.8",
+  "out": "PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\n\n--- 8.8.8.8 ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3053ms"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "curl -sS -o /dev/null -w \"HTTP %{http_code}, %{time_total}s\\n\" https://www.google.com",
+  "out": "HTTP 200, 0.126238s"
+ }
+]

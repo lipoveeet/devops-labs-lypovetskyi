@@ -1,0 +1,184 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi",
+  "cmd": "cd ~ && whoami; hostname",
+  "out": "runner\nrunnervmtai0g"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ps",
+  "out": "    PID TTY          TIME CMD\n    953 ?        00:00:00 systemd\n    999 ?        00:00:00 (sd-pam)\n   1821 ?        00:00:00 hosted-compute-\n   1883 ?        00:00:00 Runner.Listener\n   1901 ?        00:00:01 Runner.Worker\n   3605 ?        00:00:00 bash\n   3606 ?        00:00:00 python3\n   3607 ?        00:00:00 bash\n   3614 ?        00:00:00 ps"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ps aux | head -25",
+  "out": "USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\nroot           1  1.6  0.0  22836 14336 ?        Ss   03:23   0:02 /sbin/init\nroot           2  0.0  0.0      0     0 ?        S    03:23   0:00 [kthreadd]\nroot           3  0.0  0.0      0     0 ?        S    03:23   0:00 [pool_workqueue_release]\nroot           4  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-rcu_gp]\nroot           5  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-sync_wq]\nroot           6  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-kvfree_rcu_reclaim]\nroot           7  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-slub_flushwq]\nroot           8  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-netns]\nroot           9  0.0  0.0      0     0 ?        I    03:23   0:00 [kworker/0:0-events]\nroot          10  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/0:0H-events_highpri]\nroot          11  0.0  0.0      0     0 ?        I    03:23   0:00 [kworker/0:1-mm_percpu_wq]\nroot          12  0.0  0.0      0     0 ?        I    03:23   0:00 [kworker/u16:0-flush-259:0]\nroot          13  0.0  0.0      0     0 ?        I<   03:23   0:00 [kworker/R-mm_percpu_wq]\nroot          14  0.0  0.0      0     0 ?        S    03:23   0:00 [ksoftirqd/0]\nroot          15  0.0  0.0      0     0 ?        I    03:23   0:00 [rcu_sched]\nroot          16  0.0  0.0      0     0 ?        S    03:23   0:00 [rcu_exp_par_gp_kthread_worker/0]\nroot          17  0.0  0.0      0     0 ?        S    03:23   0:00 [rcu_exp_gp_kthread_worker]\nroot          18  0.0  0.0      0     0 ?        S    03:23   0:00 [migration/0]\nroot          19  0.0  0.0      0     0 ?        S    03:23   0:00 [idle_inject/0]\nroot          20  0.0  0.0      0     0 ?        S    03:23   0:00 [cpuhp/0]\nroot          21  0.0  0.0      0     0 ?        S    03:23   0:00 [cpuhp/2]\nroot          22  0.0  0.0      0     0 ?        S    03:23   0:00 [idle_inject/2]\nroot          23  0.2  0.0      0     0 ?        S    03:23   0:00 [migration/2]\nroot          24  0.0  0.0      0     0 ?        S    03:23   0:00 [ksoftirqd/2]"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ps -ef --forest | head -30",
+  "out": "UID          PID    PPID  C STIME TTY          TIME CMD\nroot           2       0  0 03:23 ?        00:00:00 [kthreadd]\nroot           3       2  0 03:23 ?        00:00:00  \\_ [pool_workqueue_release]\nroot           4       2  0 03:23 ?        00:00:00  \\_ [kworker/R-rcu_gp]\nroot           5       2  0 03:23 ?        00:00:00  \\_ [kworker/R-sync_wq]\nroot           6       2  0 03:23 ?        00:00:00  \\_ [kworker/R-kvfree_rcu_reclaim]\nroot           7       2  0 03:23 ?        00:00:00  \\_ [kworker/R-slub_flushwq]\nroot           8       2  0 03:23 ?        00:00:00  \\_ [kworker/R-netns]\nroot           9       2  0 03:23 ?        00:00:00  \\_ [kworker/0:0-events]\nroot          10       2  0 03:23 ?        00:00:00  \\_ [kworker/0:0H-events_highpri]\nroot          11       2  0 03:23 ?        00:00:00  \\_ [kworker/0:1-mm_percpu_wq]\nroot          12       2  0 03:23 ?        00:00:00  \\_ [kworker/u16:0-flush-259:0]\nroot          13       2  0 03:23 ?        00:00:00  \\_ [kworker/R-mm_percpu_wq]\nroot          14       2  0 03:23 ?        00:00:00  \\_ [ksoftirqd/0]\nroot          15       2  0 03:23 ?        00:00:00  \\_ [rcu_sched]\nroot          16       2  0 03:23 ?        00:00:00  \\_ [rcu_exp_par_gp_kthread_worker/0]\nroot          17       2  0 03:23 ?        00:00:00  \\_ [rcu_exp_gp_kthread_worker]\nroot          18       2  0 03:23 ?        00:00:00  \\_ [migration/0]\nroot          19       2  0 03:23 ?        00:00:00  \\_ [idle_inject/0]\nroot          20       2  0 03:23 ?        00:00:00  \\_ [cpuhp/0]\nroot          21       2  0 03:23 ?        00:00:00  \\_ [cpuhp/2]\nroot          22       2  0 03:23 ?        00:00:00  \\_ [idle_inject/2]\nroot          23       2  0 03:23 ?        00:00:00  \\_ [migration/2]\nroot          24       2  0 03:23 ?        00:00:00  \\_ [ksoftirqd/2]\nroot          25       2  0 03:23 ?        00:00:00  \\_ [kworker/2:0-events]\nroot          26       2  0 03:23 ?        00:00:00  \\_ [kworker/2:0H-events_highpri]\nroot          27       2  0 03:23 ?        00:00:00  \\_ [cpuhp/1]\nroot          28       2  0 03:23 ?        00:00:00  \\_ [idle_inject/1]\nroot          29       2  0 03:23 ?        00:00:00  \\_ [migration/1]\nroot          30       2  0 03:23 ?        00:00:00  \\_ [ksoftirqd/1]"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "top -b -n 1 | head -20",
+  "out": "top - 03:25:07 up 2 min,  0 user,  load average: 0.56, 0.27, 0.10\nTasks: 159 total,   1 running, 158 sleeping,   0 stopped,   0 zombie\n%Cpu(s):  4.8 us,  2.4 sy,  0.0 ni, 71.4 id, 21.4 wa,  0.0 hi,  0.0 si,  0.0 st \nMiB Mem :  15989.7 total,  10485.5 free,    983.6 used,   4911.2 buff/cache     \nMiB Swap:   3072.0 total,   3072.0 free,      0.0 used.  15006.1 avail Mem \n\n    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND\n      1 root      20   0   22836  14336   9836 S   0.0   0.1   0:02.00 systemd\n      2 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kthreadd\n      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release\n      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_gp\n      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-sync_wq\n      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-kvfree_rcu_reclaim\n      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-slub_flushwq\n      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-netns\n      9 root      20   0       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0-events\n     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri\n     11 root      20   0       0      0      0 I   0.0   0.0   0:00.11 kworker/0:1-mm_percpu_wq\n     12 root      20   0       0      0      0 I   0.0   0.0   0:00.08 kworker/u16:0-flush-259:0\n     13 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-mm_percpu_wq"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "pstree -p | head -20",
+  "out": "systemd(1)-+-ModemManager(989)-+-{ModemManager}(1029)\n           |                   |-{ModemManager}(1031)\n           |                   `-{ModemManager}(1034)\n           |-agetty(904)\n           |-agetty(914)\n           |-chronyd(942)---chronyd(958)\n           |-containerd(878)-+-{containerd}(920)\n           |                 |-{containerd}(921)\n           |                 |-{containerd}(923)\n           |                 |-{containerd}(925)\n           |                 |-{containerd}(934)\n           |                 |-{containerd}(987)\n           |                 |-{containerd}(1010)\n           |                 |-{containerd}(1038)\n           |                 `-{containerd}(1053)\n           |-cron(862)\n           |-dbus-daemon(799)\n           |-dockerd(1076)-+-{dockerd}(1090)\n           |               |-{dockerd}(1091)\n           |               |-{dockerd}(1092)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "xvfb-run -a gnome-calculator > /dev/null 2>&1 &\nsleep 4",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ps aux | grep -i calculator | grep -v grep",
+  "out": "runner      3649  1.3  0.6 1393704 107800 ?      Sl   03:25   0:00 gnome-calculator"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "pgrep -af gnome-calculator",
+  "out": "3635 /bin/sh /usr/bin/xvfb-run -a gnome-calculator\n3649 gnome-calculator"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "kill $(pgrep -f gnome-calculator)\nsleep 1",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ps aux | grep -i calculator | grep -v grep || echo \"process gnome-calculator not found\"",
+  "out": "process gnome-calculator not found"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "firefox --headless > /dev/null 2>&1 &\nsleep 5",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "pgrep -a firefox | head -5",
+  "out": "3707 /usr/lib/firefox/firefox --headless"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "kill -9 $(pgrep -o firefox); sleep 1; pgrep -a firefox || echo \"firefox killed\"",
+  "out": "/tmp/tmpsebmlmwq.sh: line 59:  3707 Killed                  firefox --headless > /dev/null 2>&1\nfirefox killed"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "mkdir -p ~/user_dir && echo \"created by $(whoami)\" > ~/user_dir/user_file.txt && ls -ld ~/user_dir && ls -l ~/user_dir",
+  "out": "drwxr-xr-x 2 runner runner 4096 Oct 26 03:25 /home/runner/user_dir\ntotal 4\n-rw-r--r-- 1 runner runner 18 Oct 26 03:25 user_file.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo -i",
+  "out": ""
+ },
+ {
+  "user": "root",
+  "host": "runnervmtai0g",
+  "cwd": "/root",
+  "cmd": "whoami; id",
+  "out": "root\nuid=0(root) gid=0(root) groups=0(root)"
+ },
+ {
+  "user": "root",
+  "host": "runnervmtai0g",
+  "cwd": "/root",
+  "cmd": "mkdir /root/root_dir && echo \"created by $(whoami)\" > /root/root_dir/root_file.txt",
+  "out": ""
+ },
+ {
+  "user": "root",
+  "host": "runnervmtai0g",
+  "cwd": "/root",
+  "cmd": "ls -ld /root/root_dir; ls -l /root/root_dir",
+  "out": "drwxr-xr-x 2 root root 4096 Oct 26 03:25 /root/root_dir\ntotal 4\n-rw-r--r-- 1 root root 16 Oct 26 03:25 root_file.txt"
+ },
+ {
+  "user": "root",
+  "host": "runnervmtai0g",
+  "cwd": "/root",
+  "cmd": "mkdir -p /srv/root_dir && echo \"created by root\" > /srv/root_dir/root_file.txt && ls -ld /srv/root_dir && ls -l /srv/root_dir",
+  "out": "drwxr-xr-x 2 root root 4096 Oct 26 03:25 /srv/root_dir\ntotal 4\n-rw-r--r-- 1 root root 16 Oct 26 03:25 root_file.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "cat /srv/root_dir/root_file.txt; echo \"test\" >> /srv/root_dir/root_file.txt",
+  "out": "created by root\n/tmp/tmpsebmlmwq.sh: line 91: /srv/root_dir/root_file.txt: Permission denied"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ls /root",
+  "out": "ls: cannot open directory '/root': Permission denied"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "crontab -l",
+  "out": "no crontab for runner"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "(crontab -l 2>/dev/null; echo \"*/1 * * * * date >> /tmp/cron_test.log\") | crontab -",
+  "out": ""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "crontab -l",
+  "out": "*/1 * * * * date >> /tmp/cron_test.log"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo service cron start; sleep 65; cat /tmp/cron_test.log",
+  "out": "Mon Oct 26 03:26:01 UTC 2026"
+ }
+]

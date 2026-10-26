@@ -1,0 +1,380 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs",
+  "cmd": "docker --version",
+  "out": "Docker version 28.0.4, build b8034c0"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs",
+  "cmd": "git clone https://gitlab.com/web-systems-docker/docker-nodejs-app-lab1",
+  "out": "Cloning into 'docker-nodejs-app-lab1'...\nwarning: redirecting to https://gitlab.com/web-systems-docker/docker-nodejs-app-lab1.git/"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs",
+  "cmd": "cd docker-nodejs-app-lab1 && ls -la",
+  "out": "total 24\ndrwxr-xr-x 4 runner runner 4096 Oct 26 03:27 .\ndrwxr-xr-x 4 runner runner 4096 Oct 26 03:27 ..\ndrwxr-xr-x 7 runner runner 4096 Oct 26 03:27 .git\n-rw-r--r-- 1 runner runner   63 Oct 26 03:27 .gitignore\n-rw-r--r-- 1 runner runner  241 Oct 26 03:27 package.json\ndrwxr-xr-x 2 runner runner 4096 Oct 26 03:27 src"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "cat > Dockerfile <<'DF'\nFROM node:20-alpine3.17\nWORKDIR /usr/src/app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nEXPOSE 3001\nCMD [\"npm\", \"start\"]\nDF\ncat Dockerfile",
+  "out": "FROM node:20-alpine3.17\nWORKDIR /usr/src/app\nCOPY package*.json ./\nRUN npm install\nCOPY . .\nEXPOSE 3001\nCMD [\"npm\", \"start\"]"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker build . -t lipoveeet/nodejs-api-app 2>&1 | tail -25",
+  "out": "\n#9 [4/5] RUN npm install\n#9 1.495 \n#9 1.495 added 68 packages, and audited 69 packages in 1s\n#9 1.495 \n#9 1.495 17 packages are looking for funding\n#9 1.495   run `npm fund` for details\n#9 1.496 \n#9 1.496 found 0 vulnerabilities\n#9 1.496 npm notice \n#9 1.496 npm notice New major version of npm available! 10.2.3 -> 12.2.1\n#9 1.496 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v12.2.1>\n#9 1.496 npm notice Run `npm install -g npm@12.2.1` to update!\n#9 1.496 npm notice \n#9 DONE 1.6s\n\n#10 [5/5] COPY . .\n#10 DONE 0.0s\n\n#11 exporting to image\n#11 exporting layers\n#11 exporting layers 0.9s done\n#11 writing image sha256:281dfc5a54d3a6b284404aa11cef2e52916c5af2e8a8d96125ed50687d5afa4e done\n#11 naming to docker.io/lipoveeet/nodejs-api-app done\n#11 DONE 0.9s"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker images",
+  "out": "REPOSITORY                                   TAG       IMAGE ID       CREATED        SIZE\nlipoveeet/nodejs-api-app                     latest    281dfc5a54d3   1 second ago   143MB\nghcr.io/github/gh-aw-firewall/agent          latest    91d6360941a3   13 days ago    547MB\nghcr.io/dependabot/dependabot-updater-core   latest    759e96ae5997   13 days ago    835MB\nghcr.io/github/gh-aw-firewall/api-proxy      latest    986b9bc056a9   2 weeks ago    207MB\nghcr.io/github/github-mcp-server             latest    9875fef5aa1f   2 weeks ago    50.1MB\nghcr.io/github/gh-aw-mcpg                    latest    808996e3d477   2 weeks ago    181MB\nghcr.io/github/gh-aw-firewall/squid          latest    dc17fe424471   2 weeks ago    57.1MB"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run -p 3001:3001 -d lipoveeet/nodejs-api-app",
+  "out": "04910199b6d69aa588074aa3af9817fc87338e3b4bbc20dcefdf1c4095e9a69c"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "sleep 4; docker ps",
+  "out": "CONTAINER ID   IMAGE                      COMMAND                  CREATED         STATUS         PORTS                                         NAMES\n04910199b6d6   lipoveeet/nodejs-api-app   \"docker-entrypoint.s…\"   4 seconds ago   Up 4 seconds   0.0.0.0:3001->3001/tcp, [::]:3001->3001/tcp   wizardly_tu"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "curl -s http://localhost:3001; echo",
+  "out": "Hello World"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker stop $(docker ps -q --filter ancestor=lipoveeet/nodejs-api-app)",
+  "out": "04910199b6d6"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker ps -a",
+  "out": "CONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS                                PORTS     NAMES\n04910199b6d6   lipoveeet/nodejs-api-app   \"docker-entrypoint.s…\"   14 seconds ago   Exited (137) Less than a second ago             wizardly_tu"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker start $(docker ps -aq --filter ancestor=lipoveeet/nodejs-api-app | head -1); sleep 3; docker ps",
+  "out": "04910199b6d6\nCONTAINER ID   IMAGE                      COMMAND                  CREATED          STATUS         PORTS                                         NAMES\n04910199b6d6   lipoveeet/nodejs-api-app   \"docker-entrypoint.s…\"   17 seconds ago   Up 3 seconds   0.0.0.0:3001->3001/tcp, [::]:3001->3001/tcp   wizardly_tu"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker logs $(docker ps -q --filter ancestor=lipoveeet/nodejs-api-app)",
+  "out": "\n> Docker NodeJS App@1.0.0 start\n> node src/app.js\n\nRunning on http://localhost:3001\n\n> Docker NodeJS App@1.0.0 start\n> node src/app.js\n\nRunning on http://localhost:3001"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "timeout 5 docker logs -f $(docker ps -q --filter ancestor=lipoveeet/nodejs-api-app)",
+  "out": "\n> Docker NodeJS App@1.0.0 start\n> node src/app.js\n\nRunning on http://localhost:3001\n\n> Docker NodeJS App@1.0.0 start\n> node src/app.js\n\nRunning on http://localhost:3001"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker exec $(docker ps -q --filter ancestor=lipoveeet/nodejs-api-app) sh -c 'pwd; ls; node --version'",
+  "out": "/usr/src/app\nDockerfile\nnode_modules\npackage-lock.json\npackage.json\nsrc\nv20.10.0"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "which node || echo \"node is not installed on host in /usr/bin\"",
+  "out": "/usr/local/bin/node"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker stop $(docker ps -q --filter ancestor=lipoveeet/nodejs-api-app)",
+  "out": "04910199b6d6"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run --name student-node-app -p 3001:3001 -d lipoveeet/nodejs-api-app",
+  "out": "fbb1f677439428bd43515ddc19907cc2504f3bfe7d8444e43d067ce96e7f8078"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "sleep 3; docker ps; curl -s http://localhost:3001; echo",
+  "out": "CONTAINER ID   IMAGE                      COMMAND                  CREATED         STATUS         PORTS                                         NAMES\nfbb1f6774394   lipoveeet/nodejs-api-app   \"docker-entrypoint.s…\"   3 seconds ago   Up 3 seconds   0.0.0.0:3001->3001/tcp, [::]:3001->3001/tcp   student-node-app\nHello World"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker stop student-node-app",
+  "out": "student-node-app"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run --name env-test -e STUDENT_NAME=\"Bohdan Lypovetskyi\" -d lipoveeet/nodejs-api-app",
+  "out": "97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker exec env-test sh -c 'echo $STUDENT_NAME'",
+  "out": "Bohdan Lypovetskyi"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker inspect env-test --format 'Image: {{.Config.Image}}\nPorts: {{json .NetworkSettings.Ports}} / ExposedPorts: {{json .Config.ExposedPorts}}\nIP: {{.NetworkSettings.IPAddress}}{{range .NetworkSettings.Networks}} {{.IPAddress}}{{end}}\nCmd: {{json .Config.Cmd}}  WorkingDir: {{.Config.WorkingDir}}'",
+  "out": "Image: lipoveeet/nodejs-api-app\nPorts: {\"3001/tcp\":null} / ExposedPorts: {\"3001/tcp\":{}}\nIP: 172.17.0.2 172.17.0.2\nCmd: [\"npm\",\"start\"]  WorkingDir: /usr/src/app"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker inspect env-test | head -60",
+  "out": "[\n    {\n        \"Id\": \"97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9\",\n        \"Created\": \"2026-10-26T03:28:08.863354771Z\",\n        \"Path\": \"docker-entrypoint.sh\",\n        \"Args\": [\n            \"npm\",\n            \"start\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 4885,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-10-26T03:28:08.876276961Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:281dfc5a54d3a6b284404aa11cef2e52916c5af2e8a8d96125ed50687d5afa4e\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9/97c11adbaf8d1cf7a92600870e652a56d84650ac6da426d9f8724dabe6de6ab9-json.log\",\n        \"Name\": \"/env-test\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"docker-default\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"bridge\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": null,\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": [],\n            \"DnsOptions\": [],"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker stats --no-stream",
+  "out": "CONTAINER ID   NAME       CPU %     MEM USAGE / LIMIT    MEM %     NET I/O      BLOCK I/O   PIDS\n97c11adbaf8d   env-test   27.52%    42.6MiB / 15.61GiB   0.27%     486B / 84B   0B / 0B     18"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run -d --name limited-app --memory=\"256m\" --cpus=\"0.5\" -p 3002:3001 lipoveeet/nodejs-api-app",
+  "out": "0e556cb4aa68dd932bb485164880b56552d9e28c735471bab96d9274e7fb854e"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "sleep 3; docker stats --no-stream",
+  "out": "CONTAINER ID   NAME          CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS\n0e556cb4aa68   limited-app   0.00%     33.94MiB / 256MiB     13.26%    558B / 126B   0B / 0B      18\n97c11adbaf8d   env-test      0.00%     41.98MiB / 15.61GiB   0.26%     862B / 126B   0B / 4.1kB   18"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker volume create student-data",
+  "out": "student-data"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker volume ls",
+  "out": "DRIVER    VOLUME NAME\nlocal     student-data"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run --name volume-test -v student-data:/data alpine sh -c 'echo \"Docker volume test\" > /data/test.txt; cat /data/test.txt'",
+  "out": "Unable to find image 'alpine:latest' locally\nlatest: Pulling from library/alpine\n7b229517ed22: Pulling fs layer\n7b229517ed22: Verifying Checksum\n7b229517ed22: Download complete\n7b229517ed22: Pull complete\nDigest: sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a\nStatus: Downloaded newer image for alpine:latest\nDocker volume test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker rm volume-test",
+  "out": "volume-test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run --name volume-test-2 -v student-data:/data alpine sh -c 'cat /data/test.txt'",
+  "out": "Docker volume test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "printf 'node_modules\\n.git\\n.gitignore\\nREADME.md\\n' > .dockerignore; cat .dockerignore",
+  "out": "node_modules\n.git\n.gitignore\nREADME.md"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker build -t lipoveeet/nodejs-api-app:v1 . 2>&1 | tail -4",
+  "out": "#10 exporting layers 0.2s done\n#10 writing image sha256:c224f597376fd3b2591393812bbe56950c9b2f944311af6607e669a74a7837be done\n#10 naming to docker.io/lipoveeet/nodejs-api-app:v1 done\n#10 DONE 0.2s"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "grep -rn \"res.send\\|res.json\" --include=*.js . | grep -v node_modules | head -5",
+  "out": "./src/app.js:8:    res.send('Hello World');"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "F=$(grep -rln \"res.send\\|res.json\" --include=*.js . | grep -v node_modules | head -1); sed -i '0,/res.send(\\(.\\)/s//res.send(\\1[v2 Lypovetskyi] /' \"$F\"; grep -n \"res.send\" \"$F\" | head -3",
+  "out": "8:    res.send('[v2 Lypovetskyi] Hello World');"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker build -t lipoveeet/nodejs-api-app:v2 . 2>&1 | tail -4",
+  "out": "#10 exporting layers 0.8s done\n#10 writing image sha256:25d2a8497474d3ebd130f596e151cd04f1cae6bf3212303c430d7cc09ec609ad done\n#10 naming to docker.io/lipoveeet/nodejs-api-app:v2 done\n#10 DONE 0.8s"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker images lipoveeet/nodejs-api-app",
+  "out": "REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE\nlipoveeet/nodejs-api-app   v2        25d2a8497474   1 second ago     143MB\nlipoveeet/nodejs-api-app   v1        c224f597376f   2 seconds ago    143MB\nlipoveeet/nodejs-api-app   latest    281dfc5a54d3   57 seconds ago   143MB"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker run -d --name app-v2 -p 3005:3001 lipoveeet/nodejs-api-app:v2; sleep 3; curl -s http://localhost:3005; echo",
+  "out": "f4c77567518fa1345fdca863ee88631b24b1f867c82be1a5e58bed2bd3bcc4a6\n[v2 Lypovetskyi] Hello World"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "cd ../flask-app && ls && cat app.py requirements.txt",
+  "out": "Dockerfile\napp.py\nrequirements.txt\nfrom flask import Flask, jsonify\n\napp = Flask(__name__)\n\n\n@app.route(\"/\")\ndef index():\n    return \"<h1>Flask app in Docker</h1><p>Lypovetskyi Bohdan, PI-23-03</p>\"\n\n\n@app.route(\"/api/student\")\ndef student():\n    return jsonify(name=\"Bohdan Lypovetskyi\", group=\"PI-23-03\", number=7)\n\n\nif __name__ == \"__main__\":\n    app.run(host=\"0.0.0.0\", port=5000)\nflask==3.0.3"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/flask-app",
+  "cmd": "cat Dockerfile",
+  "out": "FROM python:3.12-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 5000\nCMD [\"python\", \"app.py\"]"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/flask-app",
+  "cmd": "docker build -t lipoveeet/flask-app:v1 . 2>&1 | tail -6",
+  "out": "#11 exporting to image\n#11 exporting layers\n#11 exporting layers 0.4s done\n#11 writing image sha256:32f0e918fde30243e7706472a8f51178318a0c1ebee8d46d6a187d8bb7b55de6 done\n#11 naming to docker.io/lipoveeet/flask-app:v1 done\n#11 DONE 0.4s"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/flask-app",
+  "cmd": "docker run -d --name flask-app -p 5000:5000 lipoveeet/flask-app:v1; sleep 4; docker ps --filter name=flask-app",
+  "out": "2f19431e35167baf01bbd0e4c1e1b982287c4f9ac430f7d8267fbef22ae2d086\nCONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                                         NAMES\n2f19431e3516   lipoveeet/flask-app:v1   \"python app.py\"   4 seconds ago   Up 4 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   flask-app"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/flask-app",
+  "cmd": "curl -s http://localhost:5000/; echo; curl -s http://localhost:5000/api/student; echo",
+  "out": "<h1>Flask app in Docker</h1><p>Lypovetskyi Bohdan, PI-23-03</p>\n{\"group\":\"PI-23-03\",\"name\":\"Bohdan Lypovetskyi\",\"number\":7}"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/flask-app",
+  "cmd": "cd ../docker-nodejs-app-lab1 && printf 'services:\\n  app:\\n    build: .\\n    ports:\\n      - \"3001:3001\"\\n' > compose.yaml && cat compose.yaml",
+  "out": "services:\n  app:\n    build: .\n    ports:\n      - \"3001:3001\""
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker rm -f $(docker ps -aq --filter publish=3001) >/dev/null 2>&1; docker compose up -d 2>&1 | tail -6",
+  "out": " Network docker-nodejs-app-lab1_default  Creating\n Network docker-nodejs-app-lab1_default  Created\n Container docker-nodejs-app-lab1-app-1  Creating\n Container docker-nodejs-app-lab1-app-1  Created\n Container docker-nodejs-app-lab1-app-1  Starting\n Container docker-nodejs-app-lab1-app-1  Started"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker compose ps",
+  "out": "NAME                           IMAGE                        COMMAND                  SERVICE   CREATED                  STATUS                  PORTS\ndocker-nodejs-app-lab1-app-1   docker-nodejs-app-lab1-app   \"docker-entrypoint.s…\"   app       Less than a second ago   Up Less than a second   0.0.0.0:3001->3001/tcp, [::]:3001->3001/tcp"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "sleep 3; curl -s http://localhost:3001; echo",
+  "out": "[v2 Lypovetskyi] Hello World"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker compose down",
+  "out": " Container docker-nodejs-app-lab1-app-1  Stopping\n Container docker-nodejs-app-lab1-app-1  Stopped\n Container docker-nodejs-app-lab1-app-1  Removing\n Container docker-nodejs-app-lab1-app-1  Removed\n Network docker-nodejs-app-lab1_default  Removing\n Network docker-nodejs-app-lab1_default  Removed"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker system df",
+  "out": "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE\nImages          12        4         2.153GB   2.012GB (93%)\nContainers      7         4         172.8kB   4.524kB (2%)\nLocal Volumes   1         1         19B       0B (0%)\nBuild Cache     25        0         1.55kB    1.55kB"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker ps -a",
+  "out": "CONTAINER ID   IMAGE                         COMMAND                  CREATED              STATUS                        PORTS                                         NAMES\n2f19431e3516   lipoveeet/flask-app:v1        \"python app.py\"          19 seconds ago       Up 18 seconds                 0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   flask-app\nf4c77567518f   lipoveeet/nodejs-api-app:v2   \"docker-entrypoint.s…\"   27 seconds ago       Up 26 seconds                 0.0.0.0:3005->3001/tcp, [::]:3005->3001/tcp   app-v2\nccb6a41976de   alpine                        \"sh -c 'cat /data/te…\"   29 seconds ago       Exited (0) 28 seconds ago                                                   volume-test-2\n0e556cb4aa68   lipoveeet/nodejs-api-app      \"docker-entrypoint.s…\"   36 seconds ago       Up 35 seconds                 0.0.0.0:3002->3001/tcp, [::]:3002->3001/tcp   limited-app\n97c11adbaf8d   lipoveeet/nodejs-api-app      \"docker-entrypoint.s…\"   38 seconds ago       Up 37 seconds                 3001/tcp                                      env-test\nfbb1f6774394   lipoveeet/nodejs-api-app      \"docker-entrypoint.s…\"   51 seconds ago       Exited (137) 37 seconds ago                                                 student-node-app\n04910199b6d6   lipoveeet/nodejs-api-app      \"docker-entrypoint.s…\"   About a minute ago   Exited (137) 50 seconds ago                                                 wizardly_tu"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker rm -f env-test limited-app volume-test-2 app-v2 student-node-app",
+  "out": "env-test\nlimited-app\nvolume-test-2\napp-v2\nstudent-node-app"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker rmi lipoveeet/nodejs-api-app:v2",
+  "out": "Untagged: lipoveeet/nodejs-api-app:v2\nDeleted: sha256:25d2a8497474d3ebd130f596e151cd04f1cae6bf3212303c430d7cc09ec609ad"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi/labs/docker-nodejs-app-lab1",
+  "cmd": "docker ps -a; docker system df",
+  "out": "CONTAINER ID   IMAGE                      COMMAND                  CREATED              STATUS                        PORTS                                         NAMES\n2f19431e3516   lipoveeet/flask-app:v1     \"python app.py\"          19 seconds ago       Up 19 seconds                 0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   flask-app\n04910199b6d6   lipoveeet/nodejs-api-app   \"docker-entrypoint.s…\"   About a minute ago   Exited (137) 50 seconds ago                                                 wizardly_tu\nTYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE\nImages          11        2         2.153GB   2.021GB (93%)\nContainers      2         1         166.8kB   3.016kB (1%)\nLocal Volumes   1         0         19B       19B (100%)\nBuild Cache     25        0         1.959kB   1.959kB"
+ }
+]

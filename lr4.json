@@ -1,0 +1,114 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi",
+  "cmd": "cd ~ && ip addr",
+  "out": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    inet 127.0.0.1/8 scope host lo\n       valid_lft forever preferred_lft forever\n    inet6 ::1/128 scope host noprefixroute \n       valid_lft forever preferred_lft forever\n2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000\n    link/ether 70:a8:a5:6e:a2:2c brd ff:ff:ff:ff:ff:ff\n    inet 10.1.0.236/20 metric 100 brd 10.1.15.255 scope global eth0\n       valid_lft forever preferred_lft forever\n    inet6 fe80::72a8:a5ff:fe6e:a22c/64 scope link \n       valid_lft forever preferred_lft forever\n3: ens1: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc mq master eth0 state UP group default qlen 1000\n    link/ether 70:a8:a5:6e:a2:2c brd ff:ff:ff:ff:ff:ff\n    altname enp0s0\n4: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default \n    link/ether ca:0e:57:72:64:76 brd ff:ff:ff:ff:ff:ff\n    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0\n       valid_lft forever preferred_lft forever"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ip route",
+  "out": "default via 10.1.0.1 dev eth0 proto dhcp src 10.1.0.236 metric 100 \n10.1.0.0/20 dev eth0 proto kernel scope link src 10.1.0.236 metric 100 \n10.1.0.1 dev eth0 proto dhcp scope link src 10.1.0.236 metric 100 \n168.63.129.16 via 10.1.0.1 dev eth0 proto dhcp src 10.1.0.236 metric 100 \n169.254.169.254 via 10.1.0.1 dev eth0 proto dhcp src 10.1.0.236 metric 100 \n172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown "
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ip route | grep default",
+  "out": "default via 10.1.0.1 dev eth0 proto dhcp src 10.1.0.236 metric 100 "
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ping -c 4 8.8.8.8",
+  "out": "PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.\n\n--- 8.8.8.8 ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3067ms"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ping -c 4 google.com",
+  "out": "PING google.com (173.194.192.100) 56(84) bytes of data.\n\n--- google.com ping statistics ---\n4 packets transmitted, 0 received, 100% packet loss, time 3102ms"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "nslookup google.com",
+  "out": "Server:\t\t127.0.0.53\nAddress:\t127.0.0.53#53\n\nNon-authoritative answer:\nName:\tgoogle.com\nAddress: 173.194.192.101\nName:\tgoogle.com\nAddress: 173.194.192.113\nName:\tgoogle.com\nAddress: 173.194.192.138\nName:\tgoogle.com\nAddress: 173.194.192.102\nName:\tgoogle.com\nAddress: 173.194.192.100\nName:\tgoogle.com\nAddress: 173.194.192.139\nName:\tgoogle.com\nAddress: 2607:f8b0:4001:c79::66\nName:\tgoogle.com\nAddress: 2607:f8b0:4001:c79::64\nName:\tgoogle.com\nAddress: 2607:f8b0:4001:c79::71\nName:\tgoogle.com\nAddress: 2607:f8b0:4001:c79::8b"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "traceroute -m 20 google.com",
+  "out": "traceroute to google.com (173.194.192.138), 20 hops max, 60 byte packets\n 1  * * *\n 2  * * *\n 3  * * *\n 4  * * *\n 5  * * *\n 6  * * *\n 7  * * *\n 8  * * *\n 9  * * *\n10  * * *\n11  * * *\n12  * * *\n13  * * *\n14  * * *\n15  * * *\n16  * * *\n17  * * *\n18  * * *\n19  * * *\n20  * * *"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "sudo traceroute -T -p 443 -m 20 google.com",
+  "out": "traceroute to google.com (173.194.194.113), 20 hops max, 60 byte packets\n 1  * * *\n 2  * * *\n 3  * * *\n 4  * * *\n 5  * * *\n 6  * * *\n 7  * * *\n 8  * * *\n 9  * * *\n10  iv-in-f113.1e100.net (173.194.194.113)  23.234 ms  25.360 ms *"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ss -tuln",
+  "out": "Netid State  Recv-Q Send-Q   Local Address:Port Peer Address:PortProcess\nudp   UNCONN 0      0           127.0.0.54:53        0.0.0.0:*          \nudp   UNCONN 0      0        127.0.0.53%lo:53        0.0.0.0:*          \nudp   UNCONN 0      0      10.1.0.236%eth0:68        0.0.0.0:*          \nudp   UNCONN 0      0            127.0.0.1:323       0.0.0.0:*          \nudp   UNCONN 0      0                [::1]:323          [::]:*          \ntcp   LISTEN 0      4096     127.0.0.53%lo:53        0.0.0.0:*          \ntcp   LISTEN 0      4096           0.0.0.0:22        0.0.0.0:*          \ntcp   LISTEN 0      4096        127.0.0.54:53        0.0.0.0:*          \ntcp   LISTEN 0      4096              [::]:22           [::]:*          "
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "curl -s https://example.com",
+  "out": "<!doctype html><html lang=en><head><meta charset=utf-8><link rel=icon href=data:,><meta name=viewport content=\"width=device-width,initial-scale=1\"><title>Example Domain</title><style>html{color-scheme:light dark;background:light-dark(#eee,#222)}body{font:16px/1.6 system-ui,sans-serif;max-width:26em;margin:auto;padding:25vh 2em 2em;text-align:center}</style></head><body><p>This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.</p><script src=/s.js></script></body></html>"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "curl -I https://example.com",
+  "out": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\nHTTP/2 200 \ndate: Mon, 26 Oct 2026 03:27:16 GMT\ncontent-type: text/html; charset=utf-8\nserver: cloudflare\nlast-modified: Sat, 24 Oct 2026 20:05:47 GMT\nallow: GET, HEAD\naccept-ranges: bytes\nage: 5540\ncf-cache-status: HIT\ncf-ray: a5065d3e1f2ba21e-MSP\nalt-svc: h3=\":443\"; ma=86400"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "curl -s ifconfig.me; echo",
+  "out": "52.165.101.194"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "ip -4 addr show eth0 | grep inet",
+  "out": "    inet 10.1.0.236/20 metric 100 brd 10.1.15.255 scope global eth0"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "nc -vz google.com 443",
+  "out": "Connection to google.com (173.194.194.100) 443 port [tcp/https] succeeded!"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "cat /etc/resolv.conf",
+  "out": "# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).\n# Do not edit.\n#\n# This file might be symlinked as /etc/resolv.conf. If you're looking at\n# /etc/resolv.conf and seeing this text, you have followed the symlink.\n#\n# This is a dynamic resolv.conf file for connecting local clients to the\n# internal DNS stub resolver of systemd-resolved. This file lists all\n# configured search domains.\n#\n# Run \"resolvectl status\" to see details about the uplink DNS servers\n# currently in use.\n#\n# Third party programs should typically not access this file directly, but only\n# through the symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a\n# different way, replace this symlink by a static file or a different symlink.\n#\n# See man:systemd-resolved.service(8) for details about the supported modes of\n# operation for /etc/resolv.conf.\n\nnameserver 127.0.0.53\noptions edns0 trust-ad\nsearch a00aycfqsj5u3g4yafhyiwmeje.gx.internal.cloudapp.net"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "resolvectl status | head -20",
+  "out": "Global\n         Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported\n  resolv.conf mode: stub\n\nLink 2 (eth0)\n    Current Scopes: DNS\n         Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported\nCurrent DNS Server: 168.63.129.16\n       DNS Servers: 168.63.129.16\n        DNS Domain: a00aycfqsj5u3g4yafhyiwmeje.gx.internal.cloudapp.net\n\nLink 3 (ens1)\n    Current Scopes: none\n         Protocols: -DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported\n\nLink 4 (docker0)\n    Current Scopes: none\n         Protocols: -DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported"
+ }
+]

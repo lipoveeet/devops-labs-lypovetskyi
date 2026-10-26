@@ -1,0 +1,16 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/work/devops-labs-lypovetskyi/devops-labs-lypovetskyi",
+  "cmd": "cd ~ && curl -sSL -o git-lab-lypovetskyi-v1.0.0.zip https://github.com/lipoveeet/git-lab-lypovetskyi/archive/refs/tags/v1.0.0.zip && ls -lh git-lab-lypovetskyi-v1.0.0.zip",
+  "out": "-rw-r--r-- 1 runner runner 8.9K Oct 26 03:26 git-lab-lypovetskyi-v1.0.0.zip"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "unzip -l git-lab-lypovetskyi-v1.0.0.zip",
+  "out": "Archive:  git-lab-lypovetskyi-v1.0.0.zip\nfd0293b7647a8d7f97c98d8ff07ef0dfafb40b86\n  Length      Date    Time    Name\n---------  ---------- -----   ----\n        0  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/\n        0  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.github/\n        0  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.github/workflows/\n     1225  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.github/workflows/git-tasks.yml\n      298  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.github/workflows/hello.yml\n       39  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.gitignore\n        0  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.lab/\n     2213  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.lab/part1.sh\n     1657  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.lab/part2.sh\n     1410  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/.lab/session.py\n     1075  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/LICENSE\n     1389  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/README.md\n       84  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/app.js\n        0  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/images/\n     1016  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/images/branches.svg\n      383  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/index.html\n      190  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/notes.txt\n       26  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/readme_test.txt\n      211  2026-10-26 03:09   git-lab-lypovetskyi-1.0.0/style.css\n---------                     -------\n    11216                     19 files"
+ }
+]
