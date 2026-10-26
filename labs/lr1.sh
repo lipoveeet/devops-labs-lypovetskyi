@@ -1,4 +1,4 @@
-cat /etc/os-release | head -4
+cd ~ && cat /etc/os-release | head -4
 ---
 ls /
 ---
